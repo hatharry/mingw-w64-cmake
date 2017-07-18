@@ -8,8 +8,7 @@ ExternalProject_Add(libbluray
         --disable-shared
         --disable-examples
         --disable-doxygen-doc
-        --disable-bdjava
-        --enable-udf
+        --disable-bdjava-jar
         --without-libxml2
         --without-fontconfig
     BUILD_COMMAND ${MAKE}
