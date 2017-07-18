@@ -17,6 +17,7 @@ ExternalProject_Add(mpv
         libjpeg
         libpng
         luajit
+        mujs
         rubberband
         uchardet
         winpthreads
@@ -35,6 +36,7 @@ ExternalProject_Add(mpv
         --enable-encoding
         --enable-egl-angle-lib
         --enable-lua
+        --enable-javascript
         --enable-libarchive
         --enable-libass
         --enable-libbluray

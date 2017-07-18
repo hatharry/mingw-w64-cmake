@@ -107,6 +107,7 @@ foreach(package
     harfbuzz
     libass
     ffmpeg
+    mujs
     mpv
 )
     include(${CMAKE_CURRENT_SOURCE_DIR}/${package}.cmake)
