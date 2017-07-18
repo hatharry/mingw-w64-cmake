@@ -5,9 +5,10 @@ ExternalProject_Add(libarchive
         lzo
         xz
         zlib
-    URL "http://www.libarchive.org/downloads/libarchive-3.3.1.tar.gz"
-    URL_HASH SHA256=29ca5bd1624ca5a007aa57e16080262ab4379dbf8797f5c52f7ea74a3b0424e7
+    URL "http://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz"
+    URL_HASH SHA256=ed2dbd6954792b2c054ccf8ec4b330a54b85904a80cef477a1c74643ddafa0ce
     UPDATE_COMMAND ""
+    PATCH_COMMAND patch -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/libarchive-bcrypt-include-case.patch
     CONFIGURE_COMMAND ${EXEC} <SOURCE_DIR>/configure
         --host=${TARGET_ARCH}
         --prefix=${MINGW_INSTALL_PREFIX}
