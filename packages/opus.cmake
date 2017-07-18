@@ -1,7 +1,7 @@
 ExternalProject_Add(opus
     DEPENDS gcc
-    URL "http://downloads.xiph.org/releases/opus/opus-1.2-alpha.tar.gz"
-    URL_HASH SHA256=654a9bebb73266271a28edcfff431e4cfd9bfcde71f42849a0cdd73bece803a7
+    URL "https://archive.mozilla.org/pub/opus/opus-1.2.1.tar.gz"
+    URL_HASH SHA256=cfafd339ccd9c5ef8d6ab15d7e1a412c054bf4cb4ecbbbcc78c12ef2def70732
     UPDATE_COMMAND ""
     CONFIGURE_COMMAND ${EXEC} <SOURCE_DIR>/configure
         --host=${TARGET_ARCH}
