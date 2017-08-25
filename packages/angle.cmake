@@ -1,3 +1,9 @@
+find_program(GYP gyp)
+
+if(NOT GYP)
+    message(FATAL_ERROR "gyp is required to build ANGLE")
+endif()
+
 ExternalProject_Add(angle
     DEPENDS gcc
     GIT_REPOSITORY https://chromium.googlesource.com/angle/angle
