@@ -7,6 +7,7 @@ endif()
 ExternalProject_Add(angle
     DEPENDS gcc
     GIT_REPOSITORY https://chromium.googlesource.com/angle/angle
+    GIT_TAG 1a1ae0f85eb60bc287768d0e5a7e95c9514a787a
     UPDATE_COMMAND ""
     PATCH_COMMAND ${EXEC} git am ${CMAKE_CURRENT_SOURCE_DIR}/angle-*.patch
     CONFIGURE_COMMAND ${CMAKE_COMMAND} -E remove_directory <SOURCE_DIR>/generated
