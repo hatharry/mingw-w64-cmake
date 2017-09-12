@@ -1,0 +1,24 @@
+From 7d4b75e11fa881b83b344fe03761b26ff1c34660 Mon Sep 17 00:00:00 2001
+From: Ricardo Constantino <wiiaboo@gmail.com>
+Date: Tue, 12 Sep 2017 10:04:45 +0100
+Subject: [PATCH] x86: fix out-of-root builds after 8bddaa2a7
+
+nasm always uses %include paths starting from the directory from where
+it's started.
+---
+ libass/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libass/Makefile.am b/libass/Makefile.am
+index bc8481f9..12991dc1 100644
+--- a/libass/Makefile.am
++++ b/libass/Makefile.am
+@@ -11,7 +11,7 @@ nasm_verbose_ = $(nasm_verbose_$(AM_DEFAULT_VERBOSITY))
+ nasm_verbose_0 = @echo "  NASM    " $@;
+ 
+ .asm.lo:
+-	$(nasm_verbose)$(LIBTOOL) $(AM_V_lt) --tag=CC --mode=compile $(AS) $(ASFLAGS) -o $@ $< -prefer-non-pic
++	$(nasm_verbose)$(LIBTOOL) $(AM_V_lt) --tag=CC --mode=compile $(AS) $(ASFLAGS) -I$(srcdir)/ -o $@ $< -prefer-non-pic
+ 
+ SRC_INTEL = x86/rasterizer.asm x86/blend_bitmaps.asm x86/blur.asm x86/cpuid.asm \
+             x86/cpuid.h
