@@ -11,7 +11,6 @@ ExternalProject_Add(libass
         fribidi
         libiconv
     GIT_REPOSITORY "https://github.com/libass/libass.git"
-    PATCH_COMMAND ${EXEC} git am ${CMAKE_CURRENT_SOURCE_DIR}/libass-*.patch
     UPDATE_COMMAND ""
     CONFIGURE_COMMAND ${EXEC} <SOURCE_DIR>/configure
         --host=${TARGET_ARCH}
