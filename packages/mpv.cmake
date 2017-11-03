@@ -19,7 +19,9 @@ ExternalProject_Add(mpv
         luajit
         mujs
         rubberband
+        shaderc
         uchardet
+        vulkan
         winpthreads
     GIT_REPOSITORY git://github.com/mpv-player/mpv.git
     UPDATE_COMMAND ""
@@ -43,6 +45,8 @@ ExternalProject_Add(mpv
         --enable-dvdread
         --enable-dvdnav
         --enable-uchardet
+        --enable-vulkan
+        --enable-shaderc
         --enable-rubberband
         --enable-lcms2
         --prefix=${MINGW_INSTALL_PREFIX}
