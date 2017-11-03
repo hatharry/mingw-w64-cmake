@@ -1,0 +1,56 @@
+From 7f991ed367c9b6e2442317019407f5a87461b858 Mon Sep 17 00:00:00 2001
+From: Martin Herkt <lachs0r@srsfckn.biz>
+Date: Fri, 3 Nov 2017 06:27:29 +0100
+Subject: [PATCH] always include install rules
+
+---
+ CMakeLists.txt        | 4 ----
+ loader/CMakeLists.txt | 2 +-
+ 2 files changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0d3b157f..71e5a409 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -329,7 +329,6 @@ run_vk_xml_generate(helper_file_generator.py vk_enum_string_helper.h)
+ run_vk_xml_generate(helper_file_generator.py vk_object_types.h)
+ run_vk_xml_generate(helper_file_generator.py vk_extension_helper.h)
+ 
+-if(NOT WIN32)
+     include(GNUInstallDirs)
+ 
+     add_definitions(-DFALLBACK_CONFIG_DIRS="${FALLBACK_CONFIG_DIRS}")
+@@ -340,9 +339,7 @@ if(NOT WIN32)
+     if(NOT (CMAKE_INSTALL_FULL_SYSCONFDIR STREQUAL "/etc"))
+         add_definitions(-DEXTRASYSCONFDIR="/etc")
+     endif()
+-endif()
+ 
+-if(UNIX)
+     if(INSTALL_LVL_FILES)
+         install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/vulkan" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+         install(FILES "${CMAKE_CURRENT_BINARY_DIR}/vk_layer_dispatch_table.h" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/vulkan")
+@@ -356,7 +353,6 @@ configure_file(
+ 
+ add_custom_target(uninstall
+     COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+-endif()
+ 
+ add_definitions(-DAPI_NAME="${API_NAME}")
+ 
+diff --git a/loader/CMakeLists.txt b/loader/CMakeLists.txt
+index d103beb2..2232a5ce 100644
+--- a/loader/CMakeLists.txt
++++ b/loader/CMakeLists.txt
+@@ -193,7 +193,7 @@ else()
+     target_link_libraries(${API_LOWERCASE} -ldl -lpthread -lm)
+ 
+     if(INSTALL_LVL_FILES)
+-        install(TARGETS ${API_LOWERCASE} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++        install(TARGETS ${API_LOWERCASE} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+     endif()
+ 
+     # Generate pkg-config file.
+-- 
+2.14.3
+

@@ -65,6 +65,7 @@ endfunction()
 
 foreach(package
     shaderc
+    vulkan
     libsoxr
     libzimg
     angle
