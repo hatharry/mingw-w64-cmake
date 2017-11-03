@@ -17,7 +17,8 @@ ExternalProject_Add(ffmpeg
         x264
         xvidcore
 #     GIT_REPOSITORY "git://source.ffmpeg.org/ffmpeg.git"
-    GIT_REPOSITORY "git://github.com/FFmpeg/FFmpeg.git"
+#     GIT_REPOSITORY "git://github.com/FFmpeg/FFmpeg.git"
+    GIT_REPOSITORY "https://github.com/mpv-player/ffmpeg-mpv.git"
     UPDATE_COMMAND ""
     CONFIGURE_COMMAND ${EXEC} <SOURCE_DIR>/configure
     --cross-prefix=${TARGET_ARCH}-
