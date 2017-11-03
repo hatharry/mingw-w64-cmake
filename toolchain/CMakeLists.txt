@@ -1,6 +1,6 @@
 ExternalProject_Add(binutils
-    URL "http://ftp.gnu.org/gnu/binutils/binutils-2.28.tar.bz2"
-    URL_HASH SHA256=6297433ee120b11b4b0a1c8f3512d7d73501753142ab9e2daa13c5a3edd32a72
+    URL "http://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.xz"
+    URL_HASH SHA256=0b871e271c4c620444f8264f72143b4d224aa305306d85dd77ab8dce785b1e85
     CONFIGURE_COMMAND <SOURCE_DIR>/configure
         --target=${TARGET_ARCH}
         --prefix=${CMAKE_INSTALL_PREFIX}
@@ -35,7 +35,7 @@ ExternalProject_Add(mingw-w64-headers
     DEPENDS binutils
     GIT_REPOSITORY git://git.code.sf.net/p/mingw-w64/mingw-w64
     UPDATE_COMMAND ""
-    PATCH_COMMAND ${EXEC} git am ${CMAKE_CURRENT_SOURCE_DIR}/mingw-w64-*.patch
+#     PATCH_COMMAND ${EXEC} git am ${CMAKE_CURRENT_SOURCE_DIR}/mingw-w64-*.patch
     CONFIGURE_COMMAND <SOURCE_DIR>/mingw-w64-headers/configure
         --host=${TARGET_ARCH}
         --prefix=${MINGW_INSTALL_PREFIX}
@@ -52,8 +52,8 @@ ExternalProject_Add(gcc-base
     SOURCE_DIR gcc-prefix/src/gcc
     BINARY_DIR gcc-prefix/src/gcc-build
     DEPENDS mingw-w64-headers
-    URL "ftp://ftp.gwdg.de/pub/misc/gcc/releases/gcc-7.1.0/gcc-7.1.0.tar.bz2"
-    URL_HASH SHA512=b5d952be9a10f0e0926bb2868877d10544039d6d2f35ba0a08f51231dd622a007650764a03e173194701467547789ad7d2d9cbc10adcdf118d619cdedbd14aec
+    URL "ftp://ftp.gwdg.de/pub/misc/gcc/releases/gcc-7.2.0/gcc-7.2.0.tar.xz"
+    URL_HASH SHA512=f853cd6530b4055d8d8289da74687cb4c6d5f363598d386332d31852b581bac76c3adb7d61889edec3b779f63d8646f0122840f12965ce4a4389ba535dbbb6e1
     PATCH_COMMAND patch -p1 < ${CMAKE_CURRENT_SOURCE_DIR}/gcc-0016-disable-weak-refs-in-libstdc++.patch
     CONFIGURE_COMMAND <SOURCE_DIR>/configure
         --target=${TARGET_ARCH}
