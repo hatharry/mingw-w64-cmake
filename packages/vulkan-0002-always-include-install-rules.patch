@@ -1,7 +1,7 @@
-From 7f991ed367c9b6e2442317019407f5a87461b858 Mon Sep 17 00:00:00 2001
+From 5b499817c54337e27c3e4d3af22f085b5b92b77d Mon Sep 17 00:00:00 2001
 From: Martin Herkt <lachs0r@srsfckn.biz>
 Date: Fri, 3 Nov 2017 06:27:29 +0100
-Subject: [PATCH] always include install rules
+Subject: [PATCH 2/2] always include install rules
 
 ---
  CMakeLists.txt        | 4 ----
@@ -9,18 +9,18 @@ Subject: [PATCH] always include install rules
  2 files changed, 1 insertion(+), 5 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 0d3b157f..71e5a409 100644
+index 8b916745..b8172638 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -329,7 +329,6 @@ run_vk_xml_generate(helper_file_generator.py vk_enum_string_helper.h)
- run_vk_xml_generate(helper_file_generator.py vk_object_types.h)
+@@ -340,7 +340,6 @@ run_vk_xml_generate(helper_file_generator.py vk_object_types.h)
  run_vk_xml_generate(helper_file_generator.py vk_extension_helper.h)
+ run_vk_xml_generate(helper_file_generator.py vk_typemap_helper.h)
  
 -if(NOT WIN32)
      include(GNUInstallDirs)
  
      add_definitions(-DFALLBACK_CONFIG_DIRS="${FALLBACK_CONFIG_DIRS}")
-@@ -340,9 +339,7 @@ if(NOT WIN32)
+@@ -351,9 +350,7 @@ if(NOT WIN32)
      if(NOT (CMAKE_INSTALL_FULL_SYSCONFDIR STREQUAL "/etc"))
          add_definitions(-DEXTRASYSCONFDIR="/etc")
      endif()
@@ -30,7 +30,7 @@ index 0d3b157f..71e5a409 100644
      if(INSTALL_LVL_FILES)
          install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/vulkan" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
          install(FILES "${CMAKE_CURRENT_BINARY_DIR}/vk_layer_dispatch_table.h" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/vulkan")
-@@ -356,7 +353,6 @@ configure_file(
+@@ -367,7 +364,6 @@ configure_file(
  
  add_custom_target(uninstall
      COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
