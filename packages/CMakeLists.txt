@@ -91,6 +91,7 @@ foreach(package
     rubberband
     zlib
     bzip2
+    libzip
     libjpeg
     lcms2
     lame
