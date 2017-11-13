@@ -15,8 +15,10 @@ string(REGEX MATCH "^[^-]+" HOST_CPU ${HOST_ARCH})
 
 if(TARGET_CPU MATCHES "x86_64")
     set(TARGET_BITS 64)
+    set(TARGET_CPU_FAMILY "x86_64")
 else()
     set(TARGET_BITS 32)
+    set(TARGET_CPU_FAMILY "x86")
 endif()
 
 processorcount(MAKEJOBS)
@@ -31,6 +33,9 @@ set(ENABLE_VCS_UPDATES true CACHE STRING "Enable automatic updates and forced re
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/toolchain.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/toolchain.cmake @ONLY)
 set(TOOLCHAIN_FILE ${CMAKE_CURRENT_BINARY_DIR}/toolchain.cmake)
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/meson_cross.txt.in ${CMAKE_CURRENT_BINARY_DIR}/meson_cross.txt @ONLY)
+set(MESON_CROSS ${CMAKE_CURRENT_BINARY_DIR}/meson_cross.txt)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/exec.in ${CMAKE_CURRENT_BINARY_DIR}/exec @ONLY)
 set(EXEC ${CMAKE_CURRENT_BINARY_DIR}/exec)
