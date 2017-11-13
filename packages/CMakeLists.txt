@@ -111,6 +111,7 @@ foreach(package
     libdvdnav
     libiconv
     sdl2
+    sdl2_mixer
     luajit
     openal-soft
     fribidi

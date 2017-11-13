@@ -1,0 +1,9 @@
+diff -ru sdl2_mixer.orig/SDL2_mixer.pc.in sdl2_mixer/SDL2_mixer.pc.in
+--- sdl2_mixer.orig/SDL2_mixer.pc.in	2017-11-13 11:02:49.000000000 +0100
++++ sdl2_mixer/SDL2_mixer.pc.in	2017-11-13 13:27:41.468845659 +0100
+@@ -9,4 +9,4 @@
+ Requires: sdl2 >= @SDL_VERSION@
+ Libs: -L${libdir} -lSDL2_mixer
+ Cflags: -I${includedir}/SDL2
+-
++Requires.private: vorbisfile
