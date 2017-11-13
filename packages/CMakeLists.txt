@@ -120,6 +120,7 @@ foreach(package
     libarchive
     freetype2
     sdl2_ttf
+    taisei
     libaacs
     libbdplus
     libbluray
