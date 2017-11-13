@@ -1,0 +1,17 @@
+Only in sdl2_ttf.orig: aclocal.m4.orig
+Only in sdl2_ttf.orig: compile
+Only in sdl2_ttf.orig: configure.orig
+Binary files sdl2_ttf.orig/.hg/dirstate and sdl2_ttf/.hg/dirstate differ
+Only in sdl2_ttf.orig: Makefile.in.orig
+diff -ru sdl2_ttf.orig/SDL2_ttf.pc.in sdl2_ttf/SDL2_ttf.pc.in
+--- sdl2_ttf.orig/SDL2_ttf.pc.in	2017-11-13 13:29:24.000000000 +0100
++++ sdl2_ttf/SDL2_ttf.pc.in	2017-11-13 13:32:34.911951662 +0100
+@@ -7,6 +7,7 @@
+ Description: ttf library for Simple DirectMedia Layer with FreeType 2 support
+ Version: @VERSION@
+ Requires: sdl2 >= @SDL_VERSION@
++Requires.private: freetype2
+ Libs: -L${libdir} -lSDL2_ttf
+ Cflags: -I${includedir}/SDL2
+ 
+Only in sdl2_ttf.orig: SDL2_ttf.pc.in.orig
