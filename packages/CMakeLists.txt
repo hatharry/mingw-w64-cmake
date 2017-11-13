@@ -43,6 +43,21 @@ function(force_rebuild_svn _name)
     endif()
 endfunction()
 
+function(force_rebuild_hg _name)
+    if(ENABLE_VCS_UPDATES)
+        ExternalProject_Add_Step(${_name} force-update
+            DEPENDEES download
+            DEPENDERS update patch
+            COMMAND hg update --clean
+            WORKING_DIRECTORY <SOURCE_DIR>
+            ALWAYS 1
+            LOG 1
+        )
+
+        force_rebuild(${_name})
+    endif()
+endfunction()
+
 function(autogen _name)
     ExternalProject_Add_Step(${_name} autogen
         DEPENDEES download update patch
