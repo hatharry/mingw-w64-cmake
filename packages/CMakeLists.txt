@@ -117,6 +117,7 @@ foreach(package
     openal-soft
     fribidi
     expat
+    boost
     libarchive
     freetype2
     sdl2_ttf

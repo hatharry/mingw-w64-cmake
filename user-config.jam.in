@@ -1,0 +1,1 @@
+using gcc : mingw : @TARGET_ARCH@-g++ : <rc>@TARGET_ARCH@-windres <archiver>@TARGET_ARCH@-ar <ranlib>@TARGET_ARCH@-ranlib ;
