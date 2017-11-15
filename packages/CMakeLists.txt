@@ -119,6 +119,7 @@ foreach(package
     fribidi
     expat
     boost
+    wxWidgets
     libarchive
     freetype2
     sdl2_ttf
