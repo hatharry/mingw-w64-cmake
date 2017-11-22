@@ -1,7 +1,7 @@
 ExternalProject_Add(vorbis
     DEPENDS ogg
-    URL "http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.gz"
-    URL_HASH SHA256=6efbcecdd3e5dfbf090341b485da9d176eb250d893e3eb378c428a2db38301ce
+    URL "https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.5.tar.xz"
+    URL_HASH SHA256=54f94a9527ff0a88477be0a71c0bab09a4c3febe0ed878b24824906cd4b0e1d1
     UPDATE_COMMAND ""
     CONFIGURE_COMMAND ${EXEC} <SOURCE_DIR>/configure
         --host=${TARGET_ARCH}

@@ -1,6 +1,6 @@
 ExternalProject_Add(lzo
     DEPENDS gcc
-    URL "http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz"
+    URL "https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz"
     URL_HASH SHA1=4924676a9bae5db58ef129dc1cebce3baa3c4b5d
     UPDATE_COMMAND ""
     CONFIGURE_COMMAND ${EXEC} <SOURCE_DIR>/configure
