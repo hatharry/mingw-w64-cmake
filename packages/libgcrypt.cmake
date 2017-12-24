@@ -4,8 +4,8 @@ endif()
 
 ExternalProject_Add(libgcrypt
     DEPENDS libgpg_error
-    URL "https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.1.tar.bz2"
-    URL_HASH SHA256=7a2875f8b1ae0301732e878c0cca2c9664ff09ef71408f085c50e332656a78b3
+    URL "https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.2.tar.bz2"
+    URL_HASH SHA256=c8064cae7558144b13ef0eb87093412380efa16c4ee30ad12ecb54886a524c07
     PATCH_COMMAND patch -p1 < ${CMAKE_CURRENT_SOURCE_DIR}/libgcrypt-1-fixes.patch
     CONFIGURE_COMMAND ${EXEC} <SOURCE_DIR>/configure
         --host=${TARGET_ARCH}
