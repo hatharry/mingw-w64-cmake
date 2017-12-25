@@ -79,6 +79,7 @@ function(autoreconf _name)
 endfunction()
 
 foreach(package
+    crossc
     icu
     shaderc
     vulkan

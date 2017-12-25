@@ -6,6 +6,7 @@ endif()
 ExternalProject_Add(mpv
     DEPENDS
         angle
+        crossc
         ffmpeg
         fribidi
         lcms2
