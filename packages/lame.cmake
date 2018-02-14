@@ -1,6 +1,6 @@
 ExternalProject_Add(lame
     DEPENDS gcc
-    GIT_REPOSITORY "git://anonscm.debian.org/pkg-multimedia/lame.git"
+    GIT_REPOSITORY "https://salsa.debian.org/multimedia-team/lame.git"
     UPDATE_COMMAND ""
     PATCH_COMMAND ${DEBPATCH}
     CONFIGURE_COMMAND ${EXEC} <SOURCE_DIR>/configure
