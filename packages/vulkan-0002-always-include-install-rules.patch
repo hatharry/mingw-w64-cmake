@@ -1,7 +1,7 @@
-From 387ce27c03bedf815229a2bc68e78639d23552ef Mon Sep 17 00:00:00 2001
+From 816a16f9c52417e82895bfbc8eac40124c7328d7 Mon Sep 17 00:00:00 2001
 From: Martin Herkt <lachs0r@srsfckn.biz>
-Date: Sun, 24 Dec 2017 19:08:05 +0100
-Subject: [PATCH 2/2] always include install rules
+Date: Wed, 14 Feb 2018 10:09:12 +0100
+Subject: [PATCH 2/3] always include install rules
 
 ---
  CMakeLists.txt        | 4 ----
@@ -9,18 +9,18 @@ Subject: [PATCH 2/2] always include install rules
  2 files changed, 1 insertion(+), 5 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 574f11f9..d7d2ce22 100644
+index 5cf85d48..0ad37985 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -351,7 +351,6 @@ run_vk_xml_generate(helper_file_generator.py vk_extension_helper.h)
- run_vk_xml_generate(helper_file_generator.py vk_typemap_helper.h)
- run_external_revision_generate(${EXTERNAL_SOURCE_ROOT}/glslang/External/spirv-tools SPIRV_TOOLS_COMMIT_ID spirv_tools_commit_id.h)
+@@ -362,7 +362,6 @@ run_external_revision_generate(${EXTERNAL_SOURCE_ROOT}/glslang/External/spirv-to
+ 
+ 
  
 -if(NOT WIN32)
      include(GNUInstallDirs)
  
      add_definitions(-DFALLBACK_CONFIG_DIRS="${FALLBACK_CONFIG_DIRS}")
-@@ -362,9 +361,7 @@ if(NOT WIN32)
+@@ -373,9 +372,7 @@ if(NOT WIN32)
      if(NOT (CMAKE_INSTALL_FULL_SYSCONFDIR STREQUAL "/etc"))
          add_definitions(-DEXTRASYSCONFDIR="/etc")
      endif()
@@ -30,19 +30,19 @@ index 574f11f9..d7d2ce22 100644
      if(INSTALL_LVL_FILES)
          install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/vulkan" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
          install(FILES "${CMAKE_CURRENT_BINARY_DIR}/vk_layer_dispatch_table.h" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/vulkan")
-@@ -378,7 +375,6 @@ configure_file(
+@@ -389,7 +386,6 @@ configure_file(
  
  add_custom_target(uninstall
      COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
 -endif()
  
- add_definitions(-DAPI_NAME="${API_NAME}")
- 
+ # Layer Utils Library
+ # For Windows, we use a static lib because the Windows loader has a fairly restrictive loader search
 diff --git a/loader/CMakeLists.txt b/loader/CMakeLists.txt
-index d103beb2..2232a5ce 100644
+index fb626b63..e2780431 100644
 --- a/loader/CMakeLists.txt
 +++ b/loader/CMakeLists.txt
-@@ -193,7 +193,7 @@ else()
+@@ -225,7 +225,7 @@ else()
      target_link_libraries(${API_LOWERCASE} -ldl -lpthread -lm)
  
      if(INSTALL_LVL_FILES)
@@ -52,5 +52,5 @@ index d103beb2..2232a5ce 100644
  
      # Generate pkg-config file.
 -- 
-2.15.1
+2.16.1
 

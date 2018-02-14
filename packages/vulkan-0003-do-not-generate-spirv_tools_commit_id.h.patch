@@ -1,6 +1,6 @@
-From 0affdf7a12c9b9bcc407deeff1942b3390f13668 Mon Sep 17 00:00:00 2001
+From 55e05973d9709ae4b8776eeac3bb887d74dedd93 Mon Sep 17 00:00:00 2001
 From: Martin Herkt <lachs0r@srsfckn.biz>
-Date: Sun, 24 Dec 2017 19:21:28 +0100
+Date: Wed, 14 Feb 2018 10:09:57 +0100
 Subject: [PATCH 3/3] do not generate spirv_tools_commit_id.h
 
 ---
@@ -8,25 +8,25 @@ Subject: [PATCH 3/3] do not generate spirv_tools_commit_id.h
  1 file changed, 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index d7d2ce22..0ad47858 100644
+index 0ad37985..7f7daf75 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -335,7 +335,6 @@ add_custom_target(generate_helper_files DEPENDS
+@@ -343,7 +343,6 @@ add_custom_target(generate_helper_files DEPENDS
      vk_dispatch_table_helper.h
      vk_extension_helper.h
      vk_typemap_helper.h
 -    spirv_tools_commit_id.h
      )
+ set_target_properties(generate_helper_files PROPERTIES FOLDER ${LVL_TARGET_FOLDER})
  
- # Rules to build generated helper files
-@@ -349,7 +348,6 @@ run_vk_xml_generate(helper_file_generator.py vk_enum_string_helper.h)
+@@ -358,7 +357,6 @@ run_vk_xml_generate(helper_file_generator.py vk_enum_string_helper.h)
  run_vk_xml_generate(helper_file_generator.py vk_object_types.h)
  run_vk_xml_generate(helper_file_generator.py vk_extension_helper.h)
  run_vk_xml_generate(helper_file_generator.py vk_typemap_helper.h)
 -run_external_revision_generate(${EXTERNAL_SOURCE_ROOT}/glslang/External/spirv-tools SPIRV_TOOLS_COMMIT_ID spirv_tools_commit_id.h)
  
-     include(GNUInstallDirs)
+ 
  
 -- 
-2.15.1
+2.16.1
 
