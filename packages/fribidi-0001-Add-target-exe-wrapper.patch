@@ -1,88 +1,79 @@
-From 875a9ba889aff0b1bb101be7ee8f878a0d9ee42e Mon Sep 17 00:00:00 2001
+From 0ebe32f49fbb172a5f3bf38bfc843ece95c47ab3 Mon Sep 17 00:00:00 2001
 From: Martin Herkt <lachs0r@srsfckn.biz>
-Date: Wed, 22 Nov 2017 15:14:51 +0100
+Date: Wed, 14 Feb 2018 10:02:18 +0100
 Subject: [PATCH] Add target exe wrapper
 
 ---
- gen.tab/Makefile.am | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ gen.tab/Makefile.am | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/gen.tab/Makefile.am b/gen.tab/Makefile.am
-index 7bc3acf..e94ca7f 100644
+index d178fc9..50c020f 100644
 --- a/gen.tab/Makefile.am
 +++ b/gen.tab/Makefile.am
-@@ -51,7 +51,7 @@ derived_bidi-type.tab.i: \
+@@ -54,7 +54,7 @@ bidi-type.tab.i: \
+ 		unidata/UnicodeData.txt \
  		fribidi-unicode-version.h \
- 		$(gen_bidi_type_tab_SOURCES)
- 	$(MAKE) $(AM_MAKEFLAGS) $(gen_bidi_type_tab)
--	./$(gen_bidi_type_tab) $(COMPRESSION) $^ > $@ \
-+	$(TARGET_EXEC) ./$(gen_bidi_type_tab) $(COMPRESSION) $^ > $@ \
- 	|| ($(RM) $@ && false)
- 
- bidi-type.tab.i: \
-@@ -59,7 +59,7 @@ bidi-type.tab.i: \
- 		fribidi-unicode-version.h \
- 		$(gen_bidi_type_tab_SOURCES)
- 	$(MAKE) $(AM_MAKEFLAGS) $(gen_bidi_type_tab)
--	./$(gen_bidi_type_tab) $(COMPRESSION) $^ > $@ \
-+	$(TARGET_EXEC) ./$(gen_bidi_type_tab) $(COMPRESSION) $^ > $@ \
+ 		$(gen_bidi_type_tab)
+-	$(AM_V_GEN) ./$(gen_bidi_type_tab) $(COMPRESSION) $^ > $@ \
++	$(AM_V_GEN) $(TARGET_EXEC) ./$(gen_bidi_type_tab) $(COMPRESSION) $^ > $@ \
  	|| ($(RM) $@ && false)
  
  DISTCLEANFILES += derived_bidi-type.tab.i
-@@ -74,7 +74,7 @@ joining-type.tab.i: \
+@@ -68,7 +68,7 @@ joining-type.tab.i: \
+ 		unidata/ArabicShaping.txt \
  		fribidi-unicode-version.h \
- 		$(gen_joining_type_tab_SOURCES)
- 	$(MAKE) $(AM_MAKEFLAGS) $(gen_joining_type_tab)
--	./$(gen_joining_type_tab) $(COMPRESSION) $^ > $@ \
-+	$(TARGET_EXEC) ./$(gen_joining_type_tab) $(COMPRESSION) $^ > $@ \
+ 		$(gen_joining_type_tab)
+-	$(AM_V_GEN) ./$(gen_joining_type_tab) $(COMPRESSION) $^ > $@ \
++	$(AM_V_GEN) $(TARGET_EXEC) ./$(gen_joining_type_tab) $(COMPRESSION) $^ > $@ \
  	|| ($(RM) $@ && false)
  
  # generate arabic-shaping.tab.i
-@@ -86,7 +86,7 @@ arabic-shaping.tab.i: \
+@@ -79,7 +79,7 @@ arabic-shaping.tab.i: \
+ 		unidata/UnicodeData.txt \
  		fribidi-unicode-version.h \
- 		$(gen_arabic_shaping_tab_SOURCES)
- 	$(MAKE) $(AM_MAKEFLAGS) $(gen_arabic_shaping_tab)
--	./$(gen_arabic_shaping_tab) $(COMPRESSION) $^ > $@ \
-+	$(TARGET_EXEC) ./$(gen_arabic_shaping_tab) $(COMPRESSION) $^ > $@ \
+ 		$(gen_arabic_shaping_tab)
+-	$(AM_V_GEN) ./$(gen_arabic_shaping_tab) $(COMPRESSION) $^ > $@ \
++	$(AM_V_GEN) $(TARGET_EXEC) ./$(gen_arabic_shaping_tab) $(COMPRESSION) $^ > $@ \
  	|| ($(RM) $@ && false)
  
  # generate mirroring.tab.i
-@@ -98,7 +98,7 @@ mirroring.tab.i: \
+@@ -90,7 +90,7 @@ mirroring.tab.i: \
+ 		unidata/BidiMirroring.txt \
  		fribidi-unicode-version.h \
- 		$(gen_mirroring_tab_SOURCES)
- 	$(MAKE) $(AM_MAKEFLAGS) $(gen_mirroring_tab)
--	./$(gen_mirroring_tab) $(COMPRESSION) $^ > $@ \
-+	$(TARGET_EXEC) ./$(gen_mirroring_tab) $(COMPRESSION) $^ > $@ \
+ 		$(gen_mirroring_tab)
+-	$(AM_V_GEN) ./$(gen_mirroring_tab) $(COMPRESSION) $^ > $@ \
++	$(AM_V_GEN) $(TARGET_EXEC) ./$(gen_mirroring_tab) $(COMPRESSION) $^ > $@ \
  	|| ($(RM) $@ && false)
  
  # generate brackets.tab.i
-@@ -111,7 +111,7 @@ brackets.tab.i: \
+@@ -102,7 +102,7 @@ brackets.tab.i: \
+ 		unidata/UnicodeData.txt \
  		fribidi-unicode-version.h \
- 		$(gen_brackets_tab_SOURCES)
- 	$(MAKE) $(AM_MAKEFLAGS) $(gen_brackets_tab)
--	./$(gen_brackets_tab) $(COMPRESSION) $^ > $@ \
-+	$(TARGET_EXEC) ./$(gen_brackets_tab) $(COMPRESSION) $^ > $@ \
+ 		$(gen_brackets_tab)
+-	$(AM_V_GEN) ./$(gen_brackets_tab) $(COMPRESSION) $^ > $@ \
++	$(AM_V_GEN) $(TARGET_EXEC) ./$(gen_brackets_tab) $(COMPRESSION) $^ > $@ \
  	|| ($(RM) $@ && false)
  
  # generate brackets-type.tab.i
-@@ -123,7 +123,7 @@ brackets-type.tab.i: \
+@@ -113,7 +113,7 @@ brackets-type.tab.i: \
+ 		unidata/BidiBrackets.txt \
  		fribidi-unicode-version.h \
- 		$(gen_brackets_type_tab_SOURCES)
- 	$(MAKE) $(AM_MAKEFLAGS) $(gen_brackets_type_tab)
--	./$(gen_brackets_type_tab) $(COMPRESSION) $^ > $@ \
-+	$(TARGET_EXEC) ./$(gen_brackets_type_tab) $(COMPRESSION) $^ > $@ \
+ 		$(gen_brackets_type_tab)
+-	$(AM_V_GEN) ./$(gen_brackets_type_tab) $(COMPRESSION) $^ > $@ \
++	$(AM_V_GEN) $(TARGET_EXEC) ./$(gen_brackets_type_tab) $(COMPRESSION) $^ > $@ \
  	|| ($(RM) $@ && false)
  
  # generate fribidi-unicode-version.h
-@@ -135,7 +135,7 @@ fribidi-unicode-version.h: \
- 		BidiMirroring.txt \
- 		$(gen_unicode_version_SOURCES)
- 	$(MAKE) $(AM_MAKEFLAGS) $(gen_unicode_version)
--	./$(gen_unicode_version) $^ > $@ \
-+	$(TARGET_EXEC) ./$(gen_unicode_version) $^ > $@ \
+@@ -124,7 +124,7 @@ fribidi-unicode-version.h: \
+ 		unidata/ReadMe.txt \
+ 		unidata/BidiMirroring.txt \
+ 		$(gen_unicode_version)
+-	$(AM_V_GEN) ./$(gen_unicode_version) $^ > $@ \
++	$(AM_V_GEN) $(TARGET_EXEC) ./$(gen_unicode_version) $^ > $@ \
  	|| ($(RM) $@ && false)
  
  # generate all generators:
 -- 
-2.15.0
+2.16.1
 
