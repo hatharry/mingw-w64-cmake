@@ -1,7 +1,7 @@
 ExternalProject_Add(icu
     DEPENDS gcc
-    URL "http://download.icu-project.org/files/icu4c/60.1/icu4c-60_1-src.tgz"
-    URL_HASH SHA256=f8f5a6c8fbf32c015a467972bdb1477dc5f5d5dfea908b6ed218715eeb5ee225
+    URL "http://download.icu-project.org/files/icu4c/60.2/icu4c-60_2-src.tgz"
+    URL_HASH SHA256=f073ea8f35b926d70bb33e6577508aa642a8b316a803f11be20af384811db418
     CONFIGURE_COMMAND ${EXEC} mkdir -p <BINARY_DIR>/native && cd <BINARY_DIR>/native && <SOURCE_DIR>/source/configure CC=${CMAKE_C_COMPILER} CXX=${CMAKE_CXX_COMPILER}
         COMMAND ${EXEC} cd <BINARY_DIR>/native && make -j${MAKEJOBS}
         COMMAND ${EXEC} <SOURCE_DIR>/source/configure
