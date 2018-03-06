@@ -1,7 +1,7 @@
 ExternalProject_Add(boost
     DEPENDS gcc bzip2 expat zlib
-    URL "https://dl.bintray.com/boostorg/release/1.65.1/source/boost_1_65_1.tar.bz2"
-    URL_HASH SHA256=9807a5d16566c57fd74fb522764e0b134a8bbe6b6e8967b83afefd30dcd3be81
+    URL "https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.bz2"
+    URL_HASH SHA256=5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9
     CONFIGURE_COMMAND ${EXEC} cd <SOURCE_DIR>/tools/build && ./bootstrap.sh
     BUILD_COMMAND ${EXEC} <SOURCE_DIR>/tools/build/b2
         -a
