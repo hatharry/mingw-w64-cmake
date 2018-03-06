@@ -1,7 +1,21 @@
-diff -ru libzip-1.3.0.orig/lib/zip.h libzip-1.3.0/lib/zip.h
---- libzip-1.3.0.orig/lib/zip.h	2017-06-21 00:09:33.000000000 +0200
-+++ libzip-1.3.0/lib/zip.h	2017-11-13 13:15:36.798634020 +0100
-@@ -37,9 +37,9 @@
+diff -ru libzip-1.4.0/CMakeLists.txt libzip/CMakeLists.txt
+--- libzip-1.4.0/CMakeLists.txt	2017-12-29 13:37:22.000000000 +0100
++++ libzip/CMakeLists.txt	2018-03-07 01:59:08.438021912 +0100
+@@ -149,10 +149,6 @@
+ 
+ # Targets
+ ADD_SUBDIRECTORY(lib)
+-ADD_SUBDIRECTORY(man)
+-ADD_SUBDIRECTORY(src)
+-ADD_SUBDIRECTORY(regress)
+-ADD_SUBDIRECTORY(examples)
+ 
+ # pkgconfig file
+ SET(prefix ${CMAKE_INSTALL_PREFIX})
+diff -ru libzip-1.4.0/lib/zip.h libzip/lib/zip.h
+--- libzip-1.4.0/lib/zip.h	2017-12-29 13:37:22.000000000 +0100
++++ libzip/lib/zip.h	2018-03-06 23:28:15.816486500 +0100
+@@ -46,9 +46,9 @@
  
  #ifndef ZIP_EXTERN
  # ifndef ZIP_STATIC
@@ -13,28 +27,15 @@ diff -ru libzip-1.3.0.orig/lib/zip.h libzip-1.3.0/lib/zip.h
  #   define ZIP_EXTERN __attribute__ ((visibility ("default")))
  #  else
  #   define ZIP_EXTERN
-diff -ru libzip-1.3.0.orig/libzip.pc.in libzip-1.3.0/libzip.pc.in
---- libzip-1.3.0.orig/libzip.pc.in	2017-03-24 10:22:29.000000000 +0100
-+++ libzip-1.3.0/libzip.pc.in	2017-11-13 13:16:10.935511427 +0100
-@@ -9,6 +9,7 @@
+diff -ru libzip-1.4.0/libzip.pc.in libzip/libzip.pc.in
+--- libzip-1.4.0/libzip.pc.in	2017-12-29 13:37:22.000000000 +0100
++++ libzip/libzip.pc.in	2018-03-07 01:59:38.626003683 +0100
+@@ -8,6 +8,7 @@
  Name: libzip
  Description: library for handling zip archives
  Version: @VERSION@
 -Libs: @PKG_CONFIG_RPATH@ -L${libdir} -lzip @LIBS@
 +Libs: @PKG_CONFIG_RPATH@ -L${libdir} -lzip
 +Libs.private: -lbz2
- Cflags: -I${includedir} -I${libincludedir}
--
-+Requires.private: zlib
-diff -ru libzip-1.3.0.orig/Makefile.am libzip-1.3.0/Makefile.am
---- libzip-1.3.0.orig/Makefile.am	2017-03-24 10:22:29.000000000 +0100
-+++ libzip-1.3.0/Makefile.am	2017-11-13 13:15:36.798634020 +0100
-@@ -3,7 +3,7 @@
+ Cflags: -I${includedir}
  
- ACLOCAL_AMFLAGS=	-I m4
- 
--SUBDIRS=lib man src regress examples
-+SUBDIRS=lib
- 
- pkgconfigdir = $(libdir)/pkgconfig
- pkgconfig_DATA = libzip.pc
