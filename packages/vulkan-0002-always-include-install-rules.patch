@@ -1,7 +1,7 @@
-From 816a16f9c52417e82895bfbc8eac40124c7328d7 Mon Sep 17 00:00:00 2001
+From 50268157d06261e0e6ebd4ca2a135b8e2c2ab107 Mon Sep 17 00:00:00 2001
 From: Martin Herkt <lachs0r@srsfckn.biz>
-Date: Wed, 14 Feb 2018 10:09:12 +0100
-Subject: [PATCH 2/3] always include install rules
+Date: Tue, 6 Mar 2018 22:30:37 +0100
+Subject: [PATCH 2/4] always include install rules
 
 ---
  CMakeLists.txt        | 4 ----
@@ -9,10 +9,10 @@ Subject: [PATCH 2/3] always include install rules
  2 files changed, 1 insertion(+), 5 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5cf85d48..0ad37985 100644
+index 34e10dc3..b8970bb5 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -362,7 +362,6 @@ run_external_revision_generate(${EXTERNAL_SOURCE_ROOT}/glslang/External/spirv-to
+@@ -380,7 +380,6 @@ run_external_revision_generate(${EXTERNAL_SOURCE_ROOT}/glslang/External/spirv-to
  
  
  
@@ -20,7 +20,7 @@ index 5cf85d48..0ad37985 100644
      include(GNUInstallDirs)
  
      add_definitions(-DFALLBACK_CONFIG_DIRS="${FALLBACK_CONFIG_DIRS}")
-@@ -373,9 +372,7 @@ if(NOT WIN32)
+@@ -391,9 +390,7 @@ if(NOT WIN32)
      if(NOT (CMAKE_INSTALL_FULL_SYSCONFDIR STREQUAL "/etc"))
          add_definitions(-DEXTRASYSCONFDIR="/etc")
      endif()
@@ -30,7 +30,7 @@ index 5cf85d48..0ad37985 100644
      if(INSTALL_LVL_FILES)
          install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/vulkan" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
          install(FILES "${CMAKE_CURRENT_BINARY_DIR}/vk_layer_dispatch_table.h" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/vulkan")
-@@ -389,7 +386,6 @@ configure_file(
+@@ -407,7 +404,6 @@ configure_file(
  
  add_custom_target(uninstall
      COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
@@ -39,18 +39,18 @@ index 5cf85d48..0ad37985 100644
  # Layer Utils Library
  # For Windows, we use a static lib because the Windows loader has a fairly restrictive loader search
 diff --git a/loader/CMakeLists.txt b/loader/CMakeLists.txt
-index fb626b63..e2780431 100644
+index 4facc376..4860b570 100644
 --- a/loader/CMakeLists.txt
 +++ b/loader/CMakeLists.txt
-@@ -225,7 +225,7 @@ else()
-     target_link_libraries(${API_LOWERCASE} -ldl -lpthread -lm)
+@@ -271,7 +271,7 @@ else()
+     endif(APPLE)
  
      if(INSTALL_LVL_FILES)
 -        install(TARGETS ${API_LOWERCASE} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 +        install(TARGETS ${API_LOWERCASE} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
      endif()
  
-     # Generate pkg-config file.
+     if(NOT APPLE)
 -- 
-2.16.1
+2.16.2
 

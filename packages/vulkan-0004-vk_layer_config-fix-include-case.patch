@@ -1,0 +1,25 @@
+From f63fd43e7c6b76802b9b4de801b42fdfe18a87c7 Mon Sep 17 00:00:00 2001
+From: Martin Herkt <lachs0r@srsfckn.biz>
+Date: Tue, 6 Mar 2018 22:37:01 +0100
+Subject: [PATCH 4/4] vk_layer_config: fix include case
+
+---
+ layers/vk_layer_config.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/layers/vk_layer_config.cpp b/layers/vk_layer_config.cpp
+index 7d60570f..b1b09d4c 100644
+--- a/layers/vk_layer_config.cpp
++++ b/layers/vk_layer_config.cpp
+@@ -32,7 +32,7 @@
+ #include <vulkan/vk_layer.h>
+ 
+ #if defined(_WIN32)
+-#include <Windows.h>
++#include <windows.h>
+ #endif
+ 
+ #define MAX_CHARS_PER_LINE 4096
+-- 
+2.16.2
+
