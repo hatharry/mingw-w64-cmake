@@ -8,6 +8,8 @@ ExternalProject_Add(icu
             --host=${TARGET_ARCH}
             --prefix=${MINGW_INSTALL_PREFIX}
             --with-cross-build=<BINARY_DIR>/native
+            --enable-static
+            --disable-shared
             CFLAGS=-DU_USING_ICU_NAMESPACE=0
             CXXFLAGS=--std=gnu++0x
             SHELL=bash
