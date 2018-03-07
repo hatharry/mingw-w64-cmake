@@ -115,6 +115,7 @@ foreach(package
     libiconv
     sdl2
     sdl2_mixer
+    sdl2_image
     luajit
     openal-soft
     fribidi

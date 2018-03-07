@@ -1,0 +1,10 @@
+diff -ru sdl2_image.orig/SDL2_image.pc.in sdl2_image/SDL2_image.pc.in
+--- sdl2_image.orig/SDL2_image.pc.in	2018-03-07 07:46:08.000000000 +0100
++++ sdl2_image/SDL2_image.pc.in	2018-03-07 07:46:57.808731309 +0100
+@@ -8,5 +8,6 @@
+ Version: @VERSION@
+ Requires: sdl2 >= @SDL_VERSION@
+ Libs: -L${libdir} -lSDL2_image
++Libs.private: -lpng -ljpeg
+ Cflags: -I${includedir}/SDL2
+ 
