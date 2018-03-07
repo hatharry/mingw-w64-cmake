@@ -6,9 +6,8 @@ if((NOT MESON) OR (NOT NINJA))
 endif()
 
 ExternalProject_Add(taisei
-    DEPENDS sdl2 sdl2_ttf sdl2_mixer zlib libpng libzip
+    DEPENDS sdl2 sdl2_ttf sdl2_mixer sdl2_image zlib libpng libzip
     GIT_REPOSITORY "https://github.com/taisei-project/taisei.git"
-    GIT_TAG meson
     UPDATE_COMMAND ""
     CONFIGURE_COMMAND ${CMAKE_COMMAND} -E remove_directory <BINARY_DIR>
         COMMAND ${CMAKE_COMMAND} -E make_directory <BINARY_DIR>
