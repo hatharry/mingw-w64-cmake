@@ -1,6 +1,10 @@
 CMake-based MinGW-w64 Cross Toolchain
 =====================================
 
+.. warning::
+    This is project is no longer maintained. I now run a custom OBS instance
+    at https://obs.cirno.systems instead.
+
 This thing’s primary use is to build Windows binaries of mpv.
 
 Prerequisites
@@ -25,9 +29,6 @@ GCC, Binutils, ragel, headers for GMP, MPFR and MPC).
    You can use the following on ubuntu (and probably debian) if you dont want to work out the packages yourself::
 
        apt install git gcc g++ ragel make ninja-build gyp mercurial nasm autotools-dev autoconf automake libgmp-dev libmpfr-dev libmpc-dev
-
-   If you are looking for VM images with everything set up to work with this:
-   `<https://github.com/lachs0r/mingw-w64-env>`_
 
 
 Building Software
