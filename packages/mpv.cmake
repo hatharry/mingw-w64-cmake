@@ -5,7 +5,6 @@ endif()
 
 ExternalProject_Add(mpv
     DEPENDS
-        angle
         crossc
         ffmpeg
         fribidi
@@ -18,11 +17,9 @@ ExternalProject_Add(mpv
         libjpeg
         libpng
         luajit
-        mujs
         rubberband
         shaderc
         uchardet
-        vulkan
         winpthreads
     GIT_REPOSITORY git://github.com/mpv-player/mpv.git
     UPDATE_COMMAND ""
@@ -33,20 +30,15 @@ ExternalProject_Add(mpv
         ${MPV_LDFLAGS}
         <SOURCE_DIR>/waf configure
         --enable-static-build
-        --enable-pdf-build
         --disable-manpage-build
         --enable-libmpv-shared
-        --enable-encoding
-        --enable-egl-angle-lib
         --enable-lua
-        --enable-javascript
         --enable-libarchive
         --enable-libass
         --enable-libbluray
         --enable-dvdread
         --enable-dvdnav
         --enable-uchardet
-        --enable-vulkan
         --enable-shaderc
         --enable-rubberband
         --enable-lcms2
@@ -96,10 +88,9 @@ ExternalProject_Add_Step(mpv copy-binary
     COMMAND ${CMAKE_COMMAND} -E copy <SOURCE_DIR>/build/mpv.exe.debug ${CMAKE_CURRENT_BINARY_DIR}/mpv-dev/mpv.exe.debug
     COMMAND ${CMAKE_COMMAND} -E copy <SOURCE_DIR>/build/mpv-1.dll ${CMAKE_CURRENT_BINARY_DIR}/mpv-dev/mpv-1.dll
     COMMAND ${CMAKE_COMMAND} -E copy <SOURCE_DIR>/build/mpv-1.dll.debug ${CMAKE_CURRENT_BINARY_DIR}/mpv-dev/mpv-1.dll.debug
-    COMMAND ${CMAKE_COMMAND} -E copy <SOURCE_DIR>/build/libmpv.dll.a ${CMAKE_CURRENT_BINARY_DIR}/mpv-dev/libmpv.dll.a
+    COMMAND ${CMAKE_COMMAND} -E copy <SOURCE_DIR>/build/mpv.dll.a ${CMAKE_CURRENT_BINARY_DIR}/mpv-dev/mpv.dll.a
 
     COMMAND ${CMAKE_COMMAND} -E copy <SOURCE_DIR>/build/mpv.com ${CMAKE_CURRENT_BINARY_DIR}/mpv-package/mpv.com
-    COMMAND ${CMAKE_COMMAND} -E copy <SOURCE_DIR>/build/DOCS/man/mpv.pdf ${CMAKE_CURRENT_BINARY_DIR}/mpv-package/manual.pdf
 
     COMMAND ${CMAKE_COMMAND} -E copy ${MINGW_INSTALL_PREFIX}/bin/libaacs-0.dll ${CMAKE_CURRENT_BINARY_DIR}/mpv-package/libaacs.dll
     COMMAND ${CMAKE_COMMAND} -E copy ${MINGW_INSTALL_PREFIX}/bin/libbdplus-0.dll ${CMAKE_CURRENT_BINARY_DIR}/mpv-package/libbdplus.dll

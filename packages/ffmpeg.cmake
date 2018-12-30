@@ -16,6 +16,7 @@ ExternalProject_Add(ffmpeg
         vorbis
         x264
         xvidcore
+        zvbi
 #     GIT_REPOSITORY "git://source.ffmpeg.org/ffmpeg.git"
     GIT_REPOSITORY "git://github.com/FFmpeg/FFmpeg.git"
     UPDATE_COMMAND ""
@@ -49,6 +50,7 @@ ExternalProject_Add(ffmpeg
     --enable-libx264
     --enable-libxvid
     --enable-libzimg
+    --enable-libzvbi
     --enable-schannel
     "--extra-libs='-lsecurity -lschannel'" # ffmpeg’s build system is retarded
     BUILD_COMMAND ${MAKE}

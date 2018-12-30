@@ -82,10 +82,8 @@ foreach(package
     crossc
     icu
     shaderc
-    vulkan
     libsoxr
     libzimg
-    angle
     gmp
     xz
     lzo
@@ -131,8 +129,8 @@ foreach(package
     libbluray
     harfbuzz
     libass
+    zvbi
     ffmpeg
-    mujs
     mpv
 )
     include(${CMAKE_CURRENT_SOURCE_DIR}/${package}.cmake)
