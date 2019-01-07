@@ -21,7 +21,9 @@ ExternalProject_Add(mpv
         shaderc
         uchardet
         winpthreads
-    GIT_REPOSITORY git://github.com/mpv-player/mpv.git
+#    GIT_REPOSITORY git://github.com/mpv-player/mpv.git
+    URL "https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz"
+    URL_HASH SHA256=F9F9D461D1990F9728660B4CCB0E8CB5DCE29CCAA6AF567BEC481B79291CA623
     UPDATE_COMMAND ""
     CONFIGURE_COMMAND ${EXEC}
         PKG_CONFIG=pkg-config
@@ -48,8 +50,6 @@ ExternalProject_Add(mpv
     BUILD_IN_SOURCE 1
     LOG_DOWNLOAD 1 LOG_UPDATE 1 LOG_CONFIGURE 1 LOG_BUILD 1 LOG_INSTALL 1
 )
-
-force_rebuild_git(mpv)
 
 ExternalProject_Add_Step(mpv bootstrap
     DEPENDEES download

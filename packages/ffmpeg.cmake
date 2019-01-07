@@ -18,7 +18,9 @@ ExternalProject_Add(ffmpeg
         xvidcore
         zvbi
 #     GIT_REPOSITORY "git://source.ffmpeg.org/ffmpeg.git"
-    GIT_REPOSITORY "git://github.com/FFmpeg/FFmpeg.git"
+#    GIT_REPOSITORY "git://github.com/FFmpeg/FFmpeg.git"
+    URL "https://github.com/FFmpeg/FFmpeg/archive/n4.1.tar.gz"
+    URL_HASH SHA256=7AFB163D6974693CDAD742AA1224C33683C50845C67EE5AE35506EFC631AC121
     UPDATE_COMMAND ""
     CONFIGURE_COMMAND ${EXEC} <SOURCE_DIR>/configure
     --cross-prefix=${TARGET_ARCH}-
@@ -57,5 +59,3 @@ ExternalProject_Add(ffmpeg
     INSTALL_COMMAND ${MAKE} install
     LOG_DOWNLOAD 1 LOG_UPDATE 1 LOG_CONFIGURE 1 LOG_BUILD 1 LOG_INSTALL 1
 )
-
-force_rebuild_git(ffmpeg)
